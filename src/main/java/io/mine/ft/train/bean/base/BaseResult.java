@@ -11,9 +11,6 @@ public class BaseResult implements Serializable{
 	
 	private static final long serialVersionUID = -4496867430298036980L;
 	
-	/** 租户ID*/
-	private Long tenantId;
-	
 	/** 成功标志*/
 	private boolean success;
 	
@@ -23,11 +20,20 @@ public class BaseResult implements Serializable{
 	/** 描述 */
 	private String msg;
 	
-	public Long getTenantId() {
-		return tenantId;
+	
+	private BaseResult(boolean success, String code, String msg) {
+		super();
+		this.success = success;
+		this.code = code;
+		this.msg = msg;
 	}
-	public void setTenantId(Long tenantId) {
-		this.tenantId = tenantId;
+	
+	public static BaseResult createSuccess() {
+		return new BaseResult(true, "", "");
+	}
+	
+	public static BaseResult createFail(String code, String msg) {
+		return new BaseResult(false, code, msg);
 	}
 	/**
 	 * @return the success

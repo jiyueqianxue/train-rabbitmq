@@ -39,4 +39,20 @@ public class CreateSerialUtil {
 		}
 		return builder.toString();
 	}
+	
+	/**
+     * 生成分表键
+     *
+     * @return patition key
+     */
+    public static String getPatitionKey() {
+
+        return "" + (int) ((Math.random() * 9 + 1) * 100000);
+
+    }
+    
+    public static void main(String[] args) {
+    	String patitionKey = getPatitionKey();
+    	System.out.println(patitionKey);
+	}
 }
